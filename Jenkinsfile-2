@@ -12,9 +12,9 @@ pipeline {
     stage('Deploy App') {
       steps {
       script {        
-          sh '/usr/local/bin/kubectl config use-context tkg-workload-cluster-02-admin@tkg-workload-cluster-02'
-          sh '/usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-2'
-          sh '/usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster2.yaml -n demo-acme-2'
+          sh 'sudo /usr/local/bin/kubectl config use-context tkg-workload-cluster-02-admin@tkg-workload-cluster-02'
+          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-2'
+          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster2.yaml -n demo-acme-2'
 }
       }
     }
