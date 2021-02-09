@@ -1,0 +1,24 @@
+pipeline {
+
+  agent any
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git url:'https://github.com/srinivas1981/acme_fitness_demo.git', branch:'master'
+      }
+    }
+
+    stage('Deploy App') {
+      steps {
+      script {        
+          sh 'sudo /usr/local/bin/kubectl label ns demo-acme-2 istio-injection=enabled'
+          sh 'kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-2'
+          sh 'kubectl apply -f kubernetes-manifests/acme_fitness_cluster2.yaml -n demo-acme-2'
+}
+      }
+    }
+
+  }
+
+}
