@@ -12,7 +12,6 @@ pipeline {
     stage('Deploy App') {
       steps {
       script {        
-          sh 'sudo /usr/local/bin/kubectl label ns demo-acme-1 istio-injection=enabled'
           sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-1'
           sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n demo-acme-1'
           sh 'sudo /usr/local/bin/kubectl apply -f gateway.yaml -n demo-acme-1'
