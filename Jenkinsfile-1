@@ -12,9 +12,9 @@ pipeline {
     stage('Deploy App') {
       steps {
       script {        
-          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-1'
-          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n demo-acme-1'
-          sh 'sudo /usr/local/bin/kubectl apply -f gateway.yaml -n demo-acme-1'
+          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
+          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
+          sh 'sudo /usr/local/bin/kubectl apply -f gateway.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
 }
       }
     }
