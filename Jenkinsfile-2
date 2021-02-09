@@ -12,7 +12,7 @@ pipeline {
     stage('Deploy App') {
       steps {
       script {        
-          sh 'sudo /usr/local/bin/kubectl label ns demo-acme-2 istio-injection=enabled'
+          sh 'kubectl config use-context tkg-workload-cluster-02-admin@tkg-workload-cluster-02'
           sh 'kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-2'
           sh 'kubectl apply -f kubernetes-manifests/acme_fitness_cluster2.yaml -n demo-acme-2'
 }
