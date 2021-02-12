@@ -5,7 +5,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/srinivas1981/acme_fitness_demo.git', branch:'master'
+        git url:'https://github.com/myorg009/acme_fitness_demo.git', branch:'master'
       }
     }
 
