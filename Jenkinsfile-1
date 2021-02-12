@@ -5,16 +5,19 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/srinivas1981/acme_fitness_demo.git', branch:'master'
+        git url:'https://github.com/myorg009/acme_fitness_demo.git', branch:'master'
       }
     }
 
     stage('Deploy App') {
       steps {
-      script {        
-          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
-          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
-          sh 'sudo /usr/local/bin/kubectl apply -f gateway.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
+      script {
+          sh 'sudo /usr/local/bin/kubectl config use-context aws-workload-04-tanzu-cluster-admin@aws-workload-04-tanzu-cluster'
+          sh 'sudo /usr/local/bin/kubectl create ns shopping'
+          sh 'sudo /usr/local/bin/kubectl get ns'
+          //sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
+          //sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
+         // sh 'sudo /usr/local/bin/kubectl apply -f gateway.yaml -n demo-acme-1 --kubeconfig=/var/acme1-config/config'
 }
       }
     }
