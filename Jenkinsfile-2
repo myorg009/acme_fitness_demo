@@ -13,8 +13,9 @@ pipeline {
       steps {
       script {        
           sh 'sudo /usr/local/bin/kubectl config use-context tkg-workload-cluster-02-admin@tkg-workload-cluster-02'
-          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n demo-acme-2 --kubeconfig=/var/acme2-config/config'
-          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster2.yaml -n demo-acme-2 --kubeconfig=/var/acme2-config/config'
+          sh 'sudo /usr/local/bin/kubectl create ns catalog --kubeconfig=/var/acme2-config/config'
+          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n catalog --kubeconfig=/var/acme2-config/config'
+          sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster2.yaml -n catalog --kubeconfig=/var/acme2-config/config'
 }
       }
     }
