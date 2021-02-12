@@ -13,7 +13,7 @@ pipeline {
       steps {
       script {
           sh 'sudo /usr/local/bin/kubectl config use-context aws-workload-04-tanzu-cluster-admin@aws-workload-04-tanzu-cluster --kubeconfig=/var/aws-config/config'
-          sh 'sudo /usr/local/bin/kubectl create ns shopping'
+          //sh 'sudo /usr/local/bin/kubectl create ns shopping'
           sh 'sudo /usr/local/bin/kubectl get ns'
           sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n shopping --kubeconfig=/var/aws-config/config'
           sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n shopping --kubeconfig=/var/aws-config/config'
