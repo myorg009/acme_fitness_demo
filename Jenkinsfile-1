@@ -13,7 +13,7 @@ pipeline {
       steps {
       script {
           sh 'sudo /usr/local/bin/kubectl config use-context kubernetes-admin@aws-workload-01 --kubeconfig=/var/aws-config-workload/admin.conf'
-          sh 'sudo /usr/local/bin/kubectl create ns shopping --kubeconfig=/var/aws-config/admin.conf'
+          sh 'sudo /usr/local/bin/kubectl create ns shopping --kubeconfig=/var/aws-config-workload/admin.conf'
           sh 'sudo /usr/local/bin/kubectl get ns --kubeconfig=/var/aws-config-workload/admin.conf'
           sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/secrets.yaml -n shopping --kubeconfig=/var/aws-config-workload/admin.conf'
           sh 'sudo /usr/local/bin/kubectl apply -f kubernetes-manifests/acme_fitness_cluster1.yaml -n shopping --kubeconfig=/var/aws-config-workload/admin.conf'
